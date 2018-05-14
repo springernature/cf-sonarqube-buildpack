@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Absolute path
+BIN_DIR=$(cd $(dirname $0) && pwd)
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+DEPS_DIR=$3
+INDEX=$4
+
+echo "-----> Symlinking properties"
+rm -f ${BUILD_DIR}/sonarqube/conf/sonar.properties
+cd ${BUILD_DIR}/sonarqube/conf/
+ln -s ../../sonar.properties sonar.properties
+
+echo "-----> Creating start script"
+cp ${BIN_DIR}/../startSonarQube.sh ${BUILD_DIR}/startSonarQube.sh
+chmod +x ${BUILD_DIR}/startSonarQube.sh
