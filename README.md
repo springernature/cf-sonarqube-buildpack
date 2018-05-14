@@ -1,6 +1,6 @@
 # Cloud Foundry SonarQube Buildpack
 
-The `sonarqube-buildpack` is a [Cloud Foundry][https://www.cloudfoundry.org/] buildpack for running [SonarQube](https://www.sonarqube.org/).
+The `sonarqube-buildpack` is a [Cloud Foundry](https://www.cloudfoundry.org/) buildpack for running [SonarQube](https://www.sonarqube.org/).
 It installs java and sonarqube and uses the provided sonar.properties file for configuration.
 
 ## Usage
