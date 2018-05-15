@@ -19,4 +19,5 @@ echo "-----> Starting SonarQube"
 /home/vcap/app/sonarqube/bin/linux-x86-64/sonar.sh start
 
 echo "-----> Tailing log"
-tail -f /home/vcap/app/sonarqube/logs/sonar.log
+cd /home/vcap/app/sonarqube/logs
+tail -f ./sonar.log ./es.log ./web.log ./ce.log ./access.log
