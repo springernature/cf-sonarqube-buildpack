@@ -28,7 +28,21 @@ then
     exit 1
 fi
 
-wget "$SONARQUBE_DIST_URL/$SONARQUBE_ZIP" -O ${BIN_DIR}/sonarqube.zip --no-check-certificate -q
+wget "$SONARQUBE_DIST_URL/sonarqube/$SONARQUBE_ZIP" -O ${BIN_DIR}/sonarqube.zip --no-check-certificate -q
 unzip -q ${BIN_DIR}/sonarqube.zip -d ${BUILD_DIR}
 mv ${BUILD_DIR}/sonarqube-* ${BUILD_DIR}/sonarqube # Remove version suffix"
 
+
+if [[ -f ${BUILD_DIR}/sonar-plugins.yml ]]; then
+    echo "-----> Installing plugins"
+
+    cat ${BUILD_DIR}/sonar-plugins.yml | while read line
+    do
+        IFS=': ' read -r -a array <<< "$line"
+        PLUGIN_NAME=${array[0]}
+        PLUGIN_VERSION=${array[1]}
+        PLUGIN_URL="$SONARQUBE_DIST_URL/${PLUGIN_NAME}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
+        echo "       Installing ${PLUGIN_NAME} (${PLUGIN_VERSION})"
+        wget  -O "${BUILD_DIR}/sonarqube/extensions/plugins/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar" --no-check-certificate -q
+    done
+fi
