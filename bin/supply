@@ -43,6 +43,6 @@ if [[ -f ${BUILD_DIR}/sonar-plugins.yml ]]; then
         PLUGIN_VERSION=${array[1]}
         PLUGIN_URL="$SONARQUBE_DIST_URL/${PLUGIN_NAME}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
         echo "       Installing ${PLUGIN_NAME} (${PLUGIN_VERSION})"
-        wget  -O "${BUILD_DIR}/sonarqube/extensions/plugins/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar" --no-check-certificate -q
+        wget ${PLUGIN_URL} -O "${BUILD_DIR}/sonarqube/extensions/plugins/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar" --no-check-certificate -q
     done
 fi
