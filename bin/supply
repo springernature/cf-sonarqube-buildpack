@@ -36,13 +36,14 @@ mv ${BUILD_DIR}/sonarqube-* ${BUILD_DIR}/sonarqube # Remove version suffix"
 if [[ -f ${BUILD_DIR}/sonar-plugins.yml ]]; then
     echo "-----> Installing plugins"
 
-    cat ${BUILD_DIR}/sonar-plugins.yml | while read line
-    do
+    while read line; do
         IFS=': ' read -r -a array <<< "$line"
         PLUGIN_NAME=${array[0]}
         PLUGIN_VERSION=${array[1]}
         PLUGIN_URL="$SONARQUBE_DIST_URL/${PLUGIN_NAME}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
         echo "       Installing ${PLUGIN_NAME} (${PLUGIN_VERSION})"
         wget ${PLUGIN_URL} -O "${BUILD_DIR}/sonarqube/extensions/plugins/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar" --no-check-certificate -q
-    done
+
+    done < ${BUILD_DIR}/sonar-plugins.yml
+
 fi
