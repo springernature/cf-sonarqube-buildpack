@@ -40,7 +40,7 @@ if [[ -f ${BUILD_DIR}/sonar-plugins.yml ]]; then
     while IFS=': ' read -r PLUGIN_NAME PLUGIN_VERSION || [[ -n $PLUGIN_NAME ]]; do
 
         PLUGIN_URL="${SONARQUBE_DIST_URL}/${PLUGIN_NAME}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
-        PLUGIN_PATH="${BUILD_DIR}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
+        PLUGIN_PATH="${BUILD_DIR}/sonarqube/extensions/plugins/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
 
         echo "       Installing ${PLUGIN_NAME} (${PLUGIN_VERSION})"
 
