@@ -32,17 +32,21 @@ wget "$SONARQUBE_DIST_URL/sonarqube/$SONARQUBE_ZIP" -O ${BIN_DIR}/sonarqube.zip 
 unzip -q ${BIN_DIR}/sonarqube.zip -d ${BUILD_DIR}
 mv ${BUILD_DIR}/sonarqube-* ${BUILD_DIR}/sonarqube # Remove version suffix"
 
-
 if [[ -f ${BUILD_DIR}/sonar-plugins.yml ]]; then
     echo "-----> Installing plugins"
 
-    while read line; do
-        IFS=': ' read -r -a array <<< "$line"
-        PLUGIN_NAME=${array[0]}
-        PLUGIN_VERSION=${array[1]}
-        PLUGIN_URL="$SONARQUBE_DIST_URL/${PLUGIN_NAME}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
+    IFS=': '
+
+    # read file line by line even if there is no newline at the very end
+    # thanks https://stackoverflow.com/questions/10929453/read-a-file-line-by-line-assigning-the-value-to-a-variable#comment42383654_10929511
+    while read -r PLUGIN_NAME PLUGIN_VERSION || [[ -n $PLUGIN_NAME ]]; do
+
+        PLUGIN_URL="${SONARQUBE_DIST_URL}/${PLUGIN_NAME}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
+        PLUGIN_PATH="${BUILD_DIR}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
+
         echo "       Installing ${PLUGIN_NAME} (${PLUGIN_VERSION})"
-        wget ${PLUGIN_URL} -O "${BUILD_DIR}/sonarqube/extensions/plugins/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar" --no-check-certificate -q
+
+        wget ${PLUGIN_URL} -O "${PLUGIN_PATH}" --no-check-certificate -q
 
     done < ${BUILD_DIR}/sonar-plugins.yml
 
