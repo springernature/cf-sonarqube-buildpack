@@ -35,11 +35,9 @@ mv ${BUILD_DIR}/sonarqube-* ${BUILD_DIR}/sonarqube # Remove version suffix"
 if [[ -f ${BUILD_DIR}/sonar-plugins.yml ]]; then
     echo "-----> Installing plugins"
 
-    IFS=': '
-
     # read file line by line even if there is no newline at the very end
     # thanks https://stackoverflow.com/questions/10929453/read-a-file-line-by-line-assigning-the-value-to-a-variable#comment42383654_10929511
-    while read -r PLUGIN_NAME PLUGIN_VERSION || [[ -n $PLUGIN_NAME ]]; do
+    while IFS=': ' read -r PLUGIN_NAME PLUGIN_VERSION || [[ -n $PLUGIN_NAME ]]; do
 
         PLUGIN_URL="${SONARQUBE_DIST_URL}/${PLUGIN_NAME}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
         PLUGIN_PATH="${BUILD_DIR}/${PLUGIN_NAME}-${PLUGIN_VERSION}.jar"
