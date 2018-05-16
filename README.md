@@ -45,7 +45,7 @@ $ cf set-env <APP-NAME> MY_SUPER_SECRET_PASSWORD penguin
 
 SonarQube plugins can be installed by pushing a `sonar-plugins.yml` file with your app. It should contain line separated plugin-name to plugin-version key-value pairs.
 
-The plugin-name and version must correspond to the download file name of the plugins wiki page. 
+The plugin-name and version must correspond to the download file name that you can find on the plugins wiki page. 
 For the [GitHub Plugin](https://docs.sonarqube.org/display/PLUG/GitHub+Plugin) it would be `sonar-github-plugin-1.4.2.1027.jar` - so the correct key-value pair is `sonar-github-plugin: 1.4.2.1027`.
 
 Example:
