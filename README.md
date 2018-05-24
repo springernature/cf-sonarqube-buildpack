@@ -2,7 +2,7 @@
 
 ## Description
 The `sonarqube-buildpack` is a [Cloud Foundry](https://www.cloudfoundry.org/) buildpack for running [SonarQube](https://www.sonarqube.org/).
-It installs java 8 and sonarqube and uses the provided `sonar.properties` file for configuration.
+It installs java 8 and SonarQube and uses the provided `sonar.properties` file for configuration.
 
 ## Supported platforms
 This buildpack is tested with Cloud Foundry 6.36.1. 
@@ -16,7 +16,7 @@ $ cf push <APP-NAME> -p sonar.properties -b https://github.com/joscha-alisch/cf-
 
 **Important**
 
-You need to specify `SONARQUBE_VERSION` as an environment variable in your manifest.yml or commandline
+You need to specify `SONARQUBE_VERSION` as an environment variable in your `manifest.yml` or commandline
 
 ```yaml
 env:
@@ -30,7 +30,7 @@ cf set-env <APP_NAME> SONARQUBE_VERSION '7.1'
 
 ### Configuration 
 
-The buildpack automatically configures the port of the SonarQube web ui. Everything else can be configured in your sonar.properties file.
+The buildpack automatically configures the port of the SonarQube web ui. Everything else can be configured in your `sonar.properties` file.
 Before starting SonarQube, the buildpack replaces all variables with syntax `${MY_ENV_VARIABLE}` in the file with the corresponding environment variable.
 That makes it easy to inject secrets without the need of committing them to git.
 
@@ -58,7 +58,7 @@ sonar-ldap-plugin: 2.2.0.608
 sonar-github-plugin: 1.4.2.1027
 ```
 
-**Note:** We do **not** use a real yaml parser under the hood. So the format must be exactly like the example given above. Otherwise the download might fail. 
+**Note:** We do **not** use a real `yaml` parser under the hood. So the format must be exactly like the example given above. Otherwise the download might fail. 
 
 ## Licensing 
 This buildpack is released under [MIT License](LICENSE).
