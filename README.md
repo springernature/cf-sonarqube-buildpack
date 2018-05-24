@@ -1,10 +1,13 @@
 # Cloud Foundry SonarQube Buildpack
 
+## Description
 The `sonarqube-buildpack` is a [Cloud Foundry](https://www.cloudfoundry.org/) buildpack for running [SonarQube](https://www.sonarqube.org/).
-It installs java and sonarqube and uses the provided sonar.properties file for configuration.
+It installs java 8 and sonarqube and uses the provided `sonar.properties` file for configuration.
 
-## Usage
+## Supported platforms
+This buildpack is tested with Cloud Foundry 6.36.1. 
 
+## How to use
 To use this buildpack, specify the URI of this repository when pushing a sonar.properties file to Cloud Foundry.
 
 ```bash
@@ -25,7 +28,7 @@ cf set-env <APP_NAME> SONARQUBE_VERSION '7.1'
 ```
 
 
-## Configuration 
+### Configuration 
 
 The buildpack automatically configures the port of the SonarQube web ui. Everything else can be configured in your sonar.properties file.
 Before starting SonarQube, the buildpack replaces all variables with syntax `${MY_ENV_VARIABLE}` in the file with the corresponding environment variable.
@@ -41,7 +44,7 @@ and then for example with the cf cli:
 $ cf set-env <APP-NAME> MY_SUPER_SECRET_PASSWORD penguin
 ```
 
-## Plugins
+### Plugins
 
 SonarQube plugins can be installed by pushing a `sonar-plugins.yml` file with your app. It should contain line separated plugin-name to plugin-version key-value pairs.
 
@@ -57,6 +60,8 @@ sonar-github-plugin: 1.4.2.1027
 
 **Note:** We do **not** use a real yaml parser under the hood. So the format must be exactly like the example given above. Otherwise the download might fail. 
 
-## License
-
+## Licensing 
 This buildpack is released under [MIT License](LICENSE).
+
+## Maintenance
+This buildpack is maintained by the CMS team of Springer Nature.
