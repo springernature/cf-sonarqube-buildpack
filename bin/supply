@@ -30,7 +30,7 @@ fi
 
 wget "$SONARQUBE_DIST_URL/sonarqube/$SONARQUBE_ZIP" -O ${BIN_DIR}/sonarqube.zip --no-check-certificate -q
 unzip -q ${BIN_DIR}/sonarqube.zip -d ${BUILD_DIR}
-mv ${BUILD_DIR}/sonarqube-* ${BUILD_DIR}/sonarqube # Remove version suffix"
+mv ${BUILD_DIR}/sonarqube-${SONARQUBE_VERSION} ${BUILD_DIR}/sonarqube # Remove version suffix"
 
 if [[ -f ${BUILD_DIR}/sonar-plugins.yml ]]; then
     echo "-----> Installing plugins"
