@@ -2,7 +2,7 @@
 
 ## Description
 The `sonarqube-buildpack` is a [Cloud Foundry](https://www.cloudfoundry.org/) buildpack for running [SonarQube](https://www.sonarqube.org/).
-It installs java 8 and SonarQube and uses the provided `sonar.properties` file for configuration.
+It installs Java 8 and SonarQube and uses the provided `sonar.properties` file for configuration.
 
 ## Supported platforms
 This buildpack is tested with Cloud Foundry 6.36.1-6.45.0. 
@@ -26,7 +26,13 @@ env:
 ```bash
 cf set-env <APP_NAME> SONARQUBE_VERSION '7.1'
 ```
+### SonarQube feature "Pull Request Analysis"
 
+In case you are interested in automatically analysing pull requests with SonarQube then version 7.1. is the last one where this feature is freely available. With later versions it has been removed from the "Community Edition".
+
+See: 
+* [Release 7.2 Upgrade Notes - SonarQube-7.2](https://docs.sonarqube.org/7.2/Release7.2UpgradeNotes.html)
+* [Plans & Pricing | SonarSource](https://www.sonarsource.com/plans-and-pricing/)
 
 ### Configuration 
 
