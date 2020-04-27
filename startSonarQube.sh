@@ -18,10 +18,10 @@ echo "------------------------------------------------------" > /home/vcap/app/s
 
 
 echo "-----> set vm max map count"
-echo "vm.max_map_count=262144" >> /etc/sysctl.d/99-sysctl.conf
-echo "fs.file-max=65536" >> /etc/sysctl.d/99-sysctl.conf
-sysctl vm.max_map_count
-sysctl fs.file-max
+#echo "vm.max_map_count=262144" >> /etc/sysctl.d/99-sysctl.conf
+#echo "fs.file-max=65536" >> /etc/sysctl.d/99-sysctl.conf
+sudo sysctl vm.max_map_count
+sudo sysctl fs.file-max
 
 #echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 #echo "fs.file-max=65536" >> /etc/sysctl.conf
