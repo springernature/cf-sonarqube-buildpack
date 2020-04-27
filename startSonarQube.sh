@@ -31,11 +31,12 @@ echo "-----> set vm max map count"
 #ulimit -n 65536
 #ulimit -u 4096
 
-echo "-----> set vm max map count after"
+whoami
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+whoami
 
-sudo sysctl -w vm.max_map_count=262144
-sudo sysctl -w fs.file-max=65536
+sysctl -w vm.max_map_count=262144
+sysctl -w fs.file-max=65536
 ulimit -n 65536
 ulimit -u 4096
 
