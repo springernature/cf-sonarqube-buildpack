@@ -15,6 +15,11 @@ mv ./sonar_replaced.properties ./sonar.properties
 
 echo "------------------------------------------------------" > /home/vcap/app/sonarqube/logs/sonar.log
 
+
+echo "-----> set vm max map count"
+
+sysctl -w vm.max_map_count=262144
+
 echo "-----> Starting SonarQube"
 
 /home/vcap/app/sonarqube/bin/linux-x86-64/sonar.sh start
