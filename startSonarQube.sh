@@ -17,15 +17,15 @@ echo "------------------------------------------------------" > /home/vcap/app/s
 
 
 
-#echo "-----> set vm max map count"
+echo "-----> set vm max map count"
 
 #echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 #echo "fs.file-max=65536" >> /etc/sysctl.conf
 
 sudo sysctl -w vm.max_map_count=262144
 sudo sysctl -w fs.file-max=65536
-ulimit -n 65536
-ulimit -u 4096
+#ulimit -n 65536
+#ulimit -u 4096
 
 echo "-----> Starting SonarQube"
 
