@@ -31,12 +31,6 @@ echo "-----> set vm max map count"
 #ulimit -n 65536
 #ulimit -u 4096
 
-echo "-----> Starting SonarQube"
-
-/home/vcap/app/sonarqube/bin/linux-x86-64/sonar.sh start
-
-sleep 30
-
 echo "-----> set vm max map count after"
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
 
@@ -48,6 +42,10 @@ ulimit -u 4096
 sysctl vm.max_map_count
 sysctl fs.file-max
 
+
+echo "-----> Starting SonarQube"
+
+/home/vcap/app/sonarqube/bin/linux-x86-64/sonar.sh start
 
 echo "-----> Tailing log"
 sleep 10 # give it a bit of time to create files
