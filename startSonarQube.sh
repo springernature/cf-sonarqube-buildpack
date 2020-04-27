@@ -38,11 +38,10 @@ echo "-----> Starting SonarQube"
 sleep 30
 
 echo "-----> set vm max map count after"
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+
 sysctl vm.max_map_count
 sysctl fs.file-max
-
-sudo sysctl vm.max_map_count
-sudo sysctl fs.file-max
 
 
 echo "-----> Tailing log"
