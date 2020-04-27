@@ -38,7 +38,7 @@ echo "-----> Starting SonarQube"
 sleep 30
 
 echo "-----> set vm max map count after"
-sysctl vm.max_map_coun
+sysctl vm.max_map_count
 sysctl fs.file-max
 
 sudo sysctl vm.max_map_count
