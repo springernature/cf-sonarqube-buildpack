@@ -49,6 +49,3 @@ if [[ -f ${BUILD_DIR}/sonar-plugins.yml ]]; then
     done < ${BUILD_DIR}/sonar-plugins.yml
 
 fi
-
-echo "-----> 4"
-whoami

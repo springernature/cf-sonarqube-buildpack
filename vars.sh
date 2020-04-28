@@ -4,3 +4,5 @@ export JRE_URL=https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/downl
 export SONARQUBE_DIST_URL="https://binaries.sonarsource.com/Distribution"
 
 export SONARQUBE_ZIP="sonarqube-${SONARQUBE_VERSION}.zip"
+
+export ES_JAVA_OPTS="-e discovery.type=single-node"

@@ -2,9 +2,6 @@
 
 BUILD_DIR=$1
 
-echo "-----> 3"
-whoami
-
 cat <<EOF
 ---
 default_process_types:
