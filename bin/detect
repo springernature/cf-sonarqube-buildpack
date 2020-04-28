@@ -9,3 +9,6 @@ if [[ -f ${BUILD_DIR}/sonar.properties ]]; then
 else
   exit 1
 fi
+
+echo "-----> 1"
+whoami
