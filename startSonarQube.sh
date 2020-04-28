@@ -15,39 +15,6 @@ mv ./sonar_replaced.properties ./sonar.properties
 
 echo "------------------------------------------------------" > /home/vcap/app/sonarqube/logs/sonar.log
 
-
-
-echo "-----> set vm max map count"
-#echo "vm.max_map_count=262144" >> /etc/sysctl.d/99-sysctl.conf
-#echo "fs.file-max=65536" >> /etc/sysctl.d/99-sysctl.conf
-#sudo sysctl vm.max_map_count
-#sudo sysctl fs.file-max
-
-#echo "vm.max_map_count=262144" >> /etc/sysctl.conf
-#echo "fs.file-max=65536" >> /etc/sysctl.conf
-
-#sudo sysctl -w vm.max_map_count=262144
-#sudo sysctl -w fs.file-max=65536
-#ulimit -n 65536
-#ulimit -u 4096
-
-whoami
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
-whoami
-
-#sysctl -w vm.max_map_count=262144
-#sysctl -w fs.file-max=65536
-#ulimit -n 65536
-#ulimit -u 4096
-echo "---->"
-export ES_JAVA_OPTS="-e discovery.type=single-node"
-echo "$ES_JAVA_OPTS"
-echo "<----"
-
-sysctl vm.max_map_count
-sysctl fs.file-max
-
-
 echo "-----> Starting SonarQube"
 
 /home/vcap/app/sonarqube/bin/linux-x86-64/sonar.sh start
@@ -56,10 +23,3 @@ echo "-----> Tailing log"
 sleep 10 # give it a bit of time to create files
 cd /home/vcap/app/sonarqube/logs
 tail -f ./sonar.log ./es.log ./web.log ./ce.log ./access.log
-
-
-
-#echo "-----> set discovery.type: single-node and restart"
-#echo "discovery.type: single-node" >> /home/vcap/app/sonarqube/temp/conf/es/elasticsearch.yml
-#/home/vcap/app/sonarqube/bin/linux-x86-64/sonar.sh restart
-
