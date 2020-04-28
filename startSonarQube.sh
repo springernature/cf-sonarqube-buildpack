@@ -39,8 +39,10 @@ whoami
 #sysctl -w fs.file-max=65536
 #ulimit -n 65536
 #ulimit -u 4096
-
-echo $ES_JAVA_OPTS
+echo "---->"
+export ES_JAVA_OPTS="-e discovery.type=single-node"
+echo "$ES_JAVA_OPTS"
+echo "<----"
 
 sysctl vm.max_map_count
 sysctl fs.file-max
