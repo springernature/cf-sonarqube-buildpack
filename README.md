@@ -1,3 +1,22 @@
+# Obsolete
+
+This is outdated, please do not use it anymore. 
+
+## SonarQube fails in Cloud Foundry at least since version 7.8:
+
+https://docs.sonarqube.org/7.8/setup/upgrade-notes/
+> **Elasticsearch bootstrap checks enforced**
+> 
+> SonarQube will now fail to start if Elasticsearch's bootstrap checks fail. That means you may need to adjust the maximum number of open files and processes for the SonarQube user as part of this upgrade (SONAR-11264).
+> Plus the issue with behaving non correctly behind varnish, which adds another problem running in SNPaaS.
+> https://springernature.slack.com/archives/C6THTT5SB/p1608544182084500?thread_ts=1608536168.083700&cid=C6THTT5SB
+
+> Here is the culprit:
+> https://github.com/SonarSource/sonarqube/blob/9c4f81390e6739fa09f596d359d66c181db9ad1c/server/sonar-webserver-webapi/src/main/java/org/sonar/server/platform/ws/IndexAction.java#L69
+
+[source](https://springernature.slack.com/archives/C6THTT5SB/p1608556009090700?thread_ts=1608536168.083700&cid=C6THTT5SB)
+
+
 # Cloud Foundry SonarQube Buildpack
 
 ## Description
